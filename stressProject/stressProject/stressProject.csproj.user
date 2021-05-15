@@ -7,6 +7,9 @@
     <Compile Update="Archive.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="DisplaySpot.xsd">
