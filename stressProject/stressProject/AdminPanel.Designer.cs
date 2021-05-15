@@ -35,7 +35,7 @@ namespace stressProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 490);
+            this.ClientSize = new System.Drawing.Size(988, 539);
             this.Name = "AdminPanel";
             this.Text = "AdminForm";
             this.ResumeLayout(false);
