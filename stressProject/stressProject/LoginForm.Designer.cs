@@ -32,71 +32,72 @@ namespace stressProject
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.submitBtn = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 174);
+            this.label1.Location = new System.Drawing.Point(22, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 19);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(225, 209);
+            this.label2.Location = new System.Drawing.Point(22, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 19);
+            this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password";
             // 
             // loginTextBox
             // 
-            this.loginTextBox.Location = new System.Drawing.Point(321, 171);
+            this.loginTextBox.Location = new System.Drawing.Point(118, 14);
             this.loginTextBox.Name = "loginTextBox";
-            this.loginTextBox.Size = new System.Drawing.Size(198, 26);
+            this.loginTextBox.Size = new System.Drawing.Size(198, 27);
             this.loginTextBox.TabIndex = 2;
-            // 
-            // passwordTextBox
-            // 
-            this.passwordTextBox.Location = new System.Drawing.Point(321, 206);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(198, 26);
-            this.passwordTextBox.TabIndex = 3;
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(321, 256);
+            this.submitBtn.Location = new System.Drawing.Point(118, 103);
             this.submitBtn.Name = "submitBtn";
-            this.submitBtn.Size = new System.Drawing.Size(198, 35);
+            this.submitBtn.Size = new System.Drawing.Size(198, 37);
             this.submitBtn.TabIndex = 4;
             this.submitBtn.Text = "Submit";
             this.submitBtn.UseVisualStyleBackColor = true;
+            this.submitBtn.Click += new System.EventHandler(this.submitBtn_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.linkLabel1.Location = new System.Drawing.Point(656, 396);
+            this.linkLabel1.Location = new System.Drawing.Point(138, 156);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(114, 30);
+            this.linkLabel1.Size = new System.Drawing.Size(148, 37);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "New user?";
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(118, 47);
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(198, 27);
+            this.maskedTextBox1.TabIndex = 6;
+            // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(404, 229);
+            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.submitBtn);
-            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.loginTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -112,8 +113,8 @@ namespace stressProject
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox loginTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
