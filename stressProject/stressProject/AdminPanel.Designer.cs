@@ -1,7 +1,7 @@
 ﻿
 namespace stressProject
 {
-    partial class Form1
+    partial class AdminPanel
     {
         /// <summary>
         ///  Required designer variable.

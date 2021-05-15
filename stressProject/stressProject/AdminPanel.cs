@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace stressProject
 {
-    public partial class Form1 : Form
+    public partial class AdminPanel : Form
     {
-        public Form1()
+        public AdminPanel()
         {
             InitializeComponent();
         }
