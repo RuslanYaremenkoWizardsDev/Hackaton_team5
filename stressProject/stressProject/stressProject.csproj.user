@@ -7,6 +7,9 @@
     <Compile Update="Archive.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Connection.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

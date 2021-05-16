@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Twilio.TwiML.Voice;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 
 namespace stressProject
 {
     public partial class LoginForm : Form
     {
-
         string constr;
 
         enum Role { Failed, Admin, User }
@@ -15,7 +16,7 @@ namespace stressProject
             Role role = Role.Admin;
             var conn = new SqlConnection(constr);
             conn.Open();
-            string sql = "SELECT Access FROM[User] WHERE Login=@Login AND Password=@Password";
+            string sql = "SELECT RoleName FROM[Players] WHERE Login=@Login AND Password=@Password";
             using (var myCommand = new SqlCommand(sql, conn))
             {
                 myCommand.Parameters.AddWithValue("@Login", login);
@@ -25,7 +26,7 @@ namespace stressProject
                 {
                     if (dataReader.Read())
                     {
-                        switch ((string)dataReader["Access"])
+                        switch ((string)dataReader["RoleName"])
                         {
                             case "User": role = Role.User; break;
                             case "Admin": role = Role.Admin; break;
