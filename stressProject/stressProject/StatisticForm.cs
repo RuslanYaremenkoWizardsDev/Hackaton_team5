@@ -30,7 +30,7 @@ namespace stressProject
             try
             {
                 DataTable playerStatsTab = new DataTable();
-                sqlDataAdapter = new SqlDataAdapter("SELECT  Players.Login, PlayerStats.GamesCount, PlayerStats.WinsCount, PlayerStats.DrawsCount, PlayerStats.LosesCount, PlayerStats.CupWinsCount FROM PlayerStats INNER JOIN Players ON PlayerStats.PlayerID = Players.ID", cnn);
+                sqlDataAdapter = new SqlDataAdapter("SELECT  Players.Login, PlayerStats.GamesCount, PlayerStats.WinsCount, PlayerStats.DrawsCount, PlayerStats.LosesCount, PlayerStats.CupWinsCount FROM PlayerStats INNER JOIN Players ON PlayerStats.PlayerID = Players.ID ORDER BY WinsCount DESC", cnn);
                 sqlBuilder = new SqlCommandBuilder(sqlDataAdapter);
                 sqlDataAdapter.Fill(playerStatsTab);
                 dataGridViewPlayerStats.DataSource = playerStatsTab;
