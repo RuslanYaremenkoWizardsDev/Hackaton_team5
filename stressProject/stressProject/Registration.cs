@@ -20,6 +20,9 @@ namespace stressProject
             this.Id = Id;
         }
 
+        private int activeTab = 0;
+        private string Id = null;
+
         string constr = Properties.Settings.Default.Conecction;
         SqlConnection cnn;
 
@@ -28,8 +31,30 @@ namespace stressProject
         SqlDataAdapter daPerson;
         SqlCommandBuilder bdPerson;
 
-        private int activeTab = 0;
-        private string Id = null;
+        SqlDataAdapter daUser;
+        SqlCommandBuilder bdUser;
+        BindingSource bd2 = new BindingSource();
+        DataTable taUser = new DataTable();
+
+        public void Loading()
+        {
+            dataGridUser.DataSource = null;
+            dataGridUser.Rows.Clear();
+
+            constr = Properties.Settings.Default.Conecction;
+            SqlConnection cnn = new SqlConnection(constr);
+            cnn.Open();
+
+            DataTable dt2 = new DataTable();
+            daUser = new SqlDataAdapter("SELECT * FROM Players", cnn);
+            bdUser = new SqlCommandBuilder(daUser);
+            daUser.Fill(dt2);
+
+            bd2.DataSource = dt2;
+            dataGridUser.DataSource = bd2;
+
+            dataGridUser.Columns[0].Visible = false;
+        }
 
         public void update()
         {
@@ -55,10 +80,11 @@ namespace stressProject
         {
             try
             {
-                SqlConnection conn = new SqlConnection(constr);
-                conn.Open();
                 string sql;
                 int x = 0;
+                SqlConnection conn = new SqlConnection(constr);
+                conn.Open();
+            
                 sql = "Select * FROM Players WHERE Login=@Login and Password=@Password";
 
                 using (SqlCommand myCommand = new SqlCommand(sql, conn))
@@ -112,6 +138,7 @@ namespace stressProject
         {
             update();
             activateTab();
+            Loading();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -132,14 +159,36 @@ namespace stressProject
             sql = "Select * FROM Players WHERE Login=@Login and Password=@Password";
             SqlCommand myCommand = new SqlCommand(sql, conn);
 
-            if (Password.Text == Confirm.Text/* && !myCommand.Parameters.Contains()*/)
+            if (Password.Text == Confirm.Text)
             {
-                RegistrationFunction();
+                if (Login.Text != "" || Password.Text != "" || Email.Text != "")
+                {
+                    //if (Password.Text != dataGridUser.CurrentRow.Cells[2].Value.ToString()) 
+                    //{
+                        RegistrationFunction();
+                    //}
+                }
+                else 
+                {
+                    MessageBox.Show("Fill in the fiel");
+                }
             }
             else 
             {
                 MessageBox.Show("Sorry but no matches");
             }
+        }
+
+        private void User_Click(object sender, EventArgs e)
+        {
+            this.Width = 581;
+            this.Height = 660;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Width = 470;
+            this.Height = 260;
         }
     }
 }

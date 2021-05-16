@@ -40,6 +40,10 @@ namespace stressProject
             this.Confirm = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.dataGridUser = new System.Windows.Forms.DataGridView();
+            this.User = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).BeginInit();
             this.SuspendLayout();
             // 
             // Login
@@ -138,11 +142,44 @@ namespace stressProject
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
+            // dataGridUser
+            // 
+            this.dataGridUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridUser.Location = new System.Drawing.Point(13, 338);
+            this.dataGridUser.Name = "dataGridUser";
+            this.dataGridUser.RowHeadersWidth = 51;
+            this.dataGridUser.RowTemplate.Height = 29;
+            this.dataGridUser.Size = new System.Drawing.Size(530, 263);
+            this.dataGridUser.TabIndex = 12;
+            // 
+            // User
+            // 
+            this.User.Location = new System.Drawing.Point(198, 163);
+            this.User.Name = "User";
+            this.User.Size = new System.Drawing.Size(88, 43);
+            this.User.TabIndex = 13;
+            this.User.Text = "Users";
+            this.User.UseVisualStyleBackColor = true;
+            this.User.Click += new System.EventHandler(this.User_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 289);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 43);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 227);
+            this.ClientSize = new System.Drawing.Size(428, 219);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.User);
+            this.Controls.Add(this.dataGridUser);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.Confirm);
             this.Controls.Add(this.label4);
@@ -157,6 +194,7 @@ namespace stressProject
             this.Name = "Registration";
             this.Text = "Registration";
             this.Load += new System.EventHandler(this.Registration_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +214,8 @@ namespace stressProject
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.MaskedTextBox Confirm;
+        private System.Windows.Forms.DataGridView dataGridUser;
+        private System.Windows.Forms.Button User;
+        private System.Windows.Forms.Button button2;
     }
 }
