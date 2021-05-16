@@ -29,17 +29,12 @@ namespace stressProject
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.dataGridViewPlayerStats = new System.Windows.Forms.DataGridView();
             this.dataGridViewTournamentStats = new System.Windows.Forms.DataGridView();
             this.playersLabel = new System.Windows.Forms.Label();
             this.tournamentsLabel = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlayerStats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTournamentStats)).BeginInit();
             this.SuspendLayout();
@@ -66,19 +61,21 @@ namespace stressProject
             // 
             // dataGridViewTournamentStats
             // 
+            this.dataGridViewTournamentStats.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTournamentStats.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTournamentStats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTournamentStats.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
             this.dataGridViewTournamentStats.Location = new System.Drawing.Point(45, 320);
             this.dataGridViewTournamentStats.Name = "dataGridViewTournamentStats";
             this.dataGridViewTournamentStats.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridViewTournamentStats.RowTemplate.Height = 25;
-            this.dataGridViewTournamentStats.Size = new System.Drawing.Size(719, 113);
+            this.dataGridViewTournamentStats.Size = new System.Drawing.Size(719, 76);
             this.dataGridViewTournamentStats.TabIndex = 2;
             // 
             // playersLabel
@@ -102,36 +99,6 @@ namespace stressProject
             this.tournamentsLabel.TabIndex = 4;
             this.tournamentsLabel.Text = "Tournaments";
             this.tournamentsLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Column6";
-            this.Column6.Name = "Column6";
             // 
             // StatisticForm
             // 
@@ -159,11 +126,5 @@ namespace stressProject
         private System.Windows.Forms.DataGridView dataGridViewTournamentStats;
         private System.Windows.Forms.Label playersLabel;
         private System.Windows.Forms.Label tournamentsLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
     }
 }
