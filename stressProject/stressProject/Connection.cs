@@ -29,8 +29,8 @@ namespace stressProject
             if (Way.Text.Length > 0)
             {
                 MessageBox.Show("Connection Successfull");
-                but1.Enabled = true;
-                but3.Enabled = true;
+                //but1.Enabled = true;
+                //but3.Enabled = true;
                 this.Close();
             }
             else
