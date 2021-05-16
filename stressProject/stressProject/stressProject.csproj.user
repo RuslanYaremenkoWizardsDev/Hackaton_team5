@@ -10,7 +10,7 @@
     <Compile Update="Connection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="LoginForm.cs">
+    <Compile Update="Registration.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
