@@ -13,11 +13,11 @@ namespace stressProject
 {
     public partial class Registration : Form
     {
-        public Registration(int activeTab = 0, string shopId = null)
+        public Registration(int activeTab = 0, string Id = null)
         {
             InitializeComponent();
             this.activeTab = activeTab;
-            this.shopId = shopId;
+            this.Id = Id;
         }
 
         string constr = Properties.Settings.Default.Conecction;
@@ -29,7 +29,7 @@ namespace stressProject
         SqlCommandBuilder bdPerson;
 
         private int activeTab = 0;
-        private string shopId = null;
+        private string Id = null;
 
         public void update()
         {
@@ -51,18 +51,7 @@ namespace stressProject
             //tabControl1.SelectedTab = tabControl1.TabPages["tabPage" + activeTab];
         }
 
-        private void Registration_Load(object sender, EventArgs e)
-        {
-            update();
-            activateTab();
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            Password.UseSystemPasswordChar = !(checkBox1.Checked == true);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+         private void RegistrationFunction() 
         {
             try
             {
@@ -76,32 +65,37 @@ namespace stressProject
                 {
                     myCommand.Parameters.AddWithValue("@Login", Login.Text);
                     myCommand.Parameters.AddWithValue("@Password", Password.Text);
+                    myCommand.Parameters.AddWithValue("@Email", Email.Text);
+                    myCommand.Parameters.AddWithValue("@RoleName", "User");
+
                     SqlDataReader reader = myCommand.ExecuteReader();
+
                     while (reader.Read()) x++; reader.Close();
                 }
                 if (x == 0)
                 {
-                    sql = "INSERT INTO Shops(Shop,Shop_location,Director,Shop_phone)values" +
-                        "(@Shop,@Shop_location,@Director,@Shop_phone)";
+                    sql = "INSERT INTO Players(Login,Password,Email,RoleName)values" +
+                        "(@Login,@Password,@Email,@RoleName)";
                     using (SqlCommand myCommand = new SqlCommand(sql, conn))
                     {
-                        myCommand.Parameters.AddWithValue("@Shop", Login.Text);
-                        myCommand.Parameters.AddWithValue("@Shop_location", Password.Text);
-                        myCommand.Parameters.AddWithValue("@Director", textBox3.Text);
-                        myCommand.Parameters.AddWithValue("@Shop_phone", Password.Text);
+                        myCommand.Parameters.AddWithValue("@Login", Login.Text);
+                        myCommand.Parameters.AddWithValue("@Password", Password.Text);
+                        myCommand.Parameters.AddWithValue("@Email", Email.Text);
+                        myCommand.Parameters.AddWithValue("@RoleName", "User");
                         myCommand.ExecuteNonQuery();
                     }
                     MessageBox.Show("Insert");
                 }
                 else
                 {
-                    sql = "UPDATE Shops SET Location=@Location, Director=@Director, Shop_phone=@Shop_phone WHERE Id_Shop=@Id_Shop";
+                    sql = "UPDATE Players SET Login=@Login, Password=@Password, Email=@Email WHERE ID=@ID";
                     using (SqlCommand myCommand = new SqlCommand(sql, conn))
                     {
-                        myCommand.Parameters.AddWithValue("@Id_Shop", shopId);
-                        myCommand.Parameters.AddWithValue("@Location", Password.Text);
-                        myCommand.Parameters.AddWithValue("@Director", Password.Text);
-                        myCommand.Parameters.AddWithValue("@Shop_phone", Password.Text);
+                        myCommand.Parameters.AddWithValue("@ID", Id);
+                        myCommand.Parameters.AddWithValue("@Login", Login.Text);
+                        myCommand.Parameters.AddWithValue("@Password", Password.Text);
+                        myCommand.Parameters.AddWithValue("@Email", Email.Text);
+                        myCommand.Parameters.AddWithValue("@RoleName", "User");
                         myCommand.ExecuteNonQuery();
                     }
                     MessageBox.Show("Update");
@@ -111,6 +105,40 @@ namespace stressProject
             catch (Exception ex)
             {
                 MessageBox.Show("Error " + ex.Message);
+            }
+        }
+
+        private void Registration_Load(object sender, EventArgs e)
+        {
+            update();
+            activateTab();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            Password.UseSystemPasswordChar = !(checkBox1.Checked == true);
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            Confirm.UseSystemPasswordChar = !(checkBox2.Checked == true);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(constr);
+            conn.Open();
+            string sql;
+            sql = "Select * FROM Players WHERE Login=@Login and Password=@Password";
+            SqlCommand myCommand = new SqlCommand(sql, conn);
+
+            if (Password.Text == Confirm.Text/* && !myCommand.Parameters.Contains()*/)
+            {
+                RegistrationFunction();
+            }
+            else 
+            {
+                MessageBox.Show("Sorry but no matches");
             }
         }
     }
