@@ -17,9 +17,9 @@ namespace stressProject
             InitializeComponent();
         }
 
-        public Button but1, but2, but3;
         public string filename;
         public string connectionStr;
+        public Button b1, b2;
 
         private void Connection_Click(object sender, EventArgs e)
         {
@@ -28,15 +28,15 @@ namespace stressProject
             Properties.Settings.Default.Save();
             if (Way.Text.Length > 0)
             {
+                //b1.Visible = true;
+                //b2.Visible = true;
                 MessageBox.Show("Connection Successfull");
-                but1.Enabled = true;
-                but3.Enabled = true;
-                this.Close();
+                //Close();
+
+                var adminPanel = new AdminPanel();
+                adminPanel.ShowDialog();
             }
-            else
-            {
-                MessageBox.Show("Something wrong");
-            }
+            else MessageBox.Show("Select DB to connect please");
         }
 
         private void PathSetting_Click(object sender, EventArgs e)
@@ -48,8 +48,5 @@ namespace stressProject
                 Way.Text = filename;
             }
         }
-
-        
-
     }
 }
