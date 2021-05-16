@@ -14,10 +14,11 @@ namespace stressProject
 {
     public partial class StatisticForm : Form
     {
-        private SqlConnection sqlConnection = null;
         private SqlCommandBuilder sqlBuilder = null;
         private SqlDataAdapter sqlDataAdapter = null;
 
+        string constr = Properties.Settings.Default.Conecction;
+        SqlConnection cnn;
 
         public StatisticForm()
         {
@@ -29,13 +30,13 @@ namespace stressProject
             try
             {
                 DataTable playerStatsTab = new DataTable();
-                sqlDataAdapter = new SqlDataAdapter("SELECT  Players.Login, PlayerStats.GamesCount, PlayerStats.WinsCount, PlayerStats.DrawsCount, PlayerStats.LosesCount, PlayerStats.CupWinsCount FROM PlayerStats INNER JOIN Players ON PlayerStats.PlayerID = Players.ID", sqlConnection);
+                sqlDataAdapter = new SqlDataAdapter("SELECT  Players.Login, PlayerStats.GamesCount, PlayerStats.WinsCount, PlayerStats.DrawsCount, PlayerStats.LosesCount, PlayerStats.CupWinsCount FROM PlayerStats INNER JOIN Players ON PlayerStats.PlayerID = Players.ID", cnn);
                 sqlBuilder = new SqlCommandBuilder(sqlDataAdapter);
                 sqlDataAdapter.Fill(playerStatsTab);
                 dataGridViewPlayerStats.DataSource = playerStatsTab;
 
                 DataTable tournamentStatsTab = new DataTable();
-                sqlDataAdapter = new SqlDataAdapter("SELECT NumberOfTournaments, ActiveTournaments, FinishedTournaments, NotStartedTournaments FROM  TournamentStats", sqlConnection);
+                sqlDataAdapter = new SqlDataAdapter("SELECT NumberOfTournaments, ActiveTournaments, FinishedTournaments, NotStartedTournaments FROM  TournamentStats", cnn);
                 sqlDataAdapter.Fill(tournamentStatsTab);
                 dataGridViewTournamentStats.DataSource = tournamentStatsTab;
 
@@ -49,8 +50,8 @@ namespace stressProject
 
         private void StatisticForm_Load(object sender, EventArgs e)
         {
-            sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Наташа\source\repos\NewRepo\Hackaton_team5\stressProject\stressProject\Sport.mdf;Integrated Security=True;Connect Timeout=30");
-            sqlConnection.Open();
+            cnn = new SqlConnection(constr);
+            cnn.Open();
 
             LoadData();
         }
