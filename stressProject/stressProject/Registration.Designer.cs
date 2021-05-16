@@ -29,22 +29,22 @@ namespace stressProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Login = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.Password = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Login
             // 
-            this.textBox1.Location = new System.Drawing.Point(151, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 27);
-            this.textBox1.TabIndex = 0;
+            this.Login.Location = new System.Drawing.Point(151, 12);
+            this.Login.Name = "Login";
+            this.Login.Size = new System.Drawing.Size(267, 27);
+            this.Login.TabIndex = 0;
             // 
             // textBox3
             // 
@@ -100,28 +100,29 @@ namespace stressProject
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // maskedTextBox1
+            // Password
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(151, 45);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(233, 27);
-            this.maskedTextBox1.TabIndex = 8;
+            this.Password.Location = new System.Drawing.Point(151, 45);
+            this.Password.Name = "Password";
+            this.Password.Size = new System.Drawing.Size(233, 27);
+            this.Password.TabIndex = 8;
             // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 180);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.Password);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Login);
             this.Name = "Registration";
             this.Text = "Registration";
+            this.Load += new System.EventHandler(this.Registration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,13 +130,13 @@ namespace stressProject
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Login;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox Password;
     }
 }
