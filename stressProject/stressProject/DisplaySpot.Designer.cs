@@ -3492,8 +3492,8 @@ SELECT ID, Name, Description, Mode, Place, StartDate, LastRegistrationDate, Leve
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Players] ([ID], [Login], [Password], [Email], [RoleName]) VALU" +
-                "ES (@ID, @Login, @Password, @Email, @RoleName);\r\nSELECT ID, Login, Password, Ema" +
-                "il, RoleName FROM Players WHERE (ID = @ID)";
+                "ES (@ID, @Login, @Password, @Email, @RoleName);\nSELECT ID, Login, Password, Emai" +
+                "l, RoleName FROM Players WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4241,8 +4241,8 @@ SELECT ID, PlayerID, GamesCount, WinsCount, DrawsCount, LosesCount, CupWinsCount
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tournaments_Players] ([ID], [IDTournament], [IDPlayer]) VALUES" +
-                " (@ID, @IDTournament, @IDPlayer);\r\nSELECT ID, IDTournament, IDPlayer FROM Tourna" +
-                "ments_Players WHERE (ID = @ID)";
+                " (@ID, @IDTournament, @IDPlayer);\nSELECT ID, IDTournament, IDPlayer FROM Tournam" +
+                "ents_Players WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDTournament", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IDTournament", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
