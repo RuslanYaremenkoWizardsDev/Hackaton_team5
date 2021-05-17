@@ -93,9 +93,11 @@ namespace stressProject
 
         private void btnCreateTournament_Click(object sender, EventArgs e)
         {
-            Form fremCreateTournament = new frmCreateEditTournament(sqlConnectionHackathon, sqlDataAdapter, dataSetTournaments);
-            fremCreateTournament.Text = "Create Tournament";
-            fremCreateTournament.ShowDialog();
+            Form tornamentCreation = new TournamentCreation();
+            tornamentCreation.ShowDialog();
+            //Form fremCreateTournament = new frmCreateEditTournament(sqlConnectionHackathon, sqlDataAdapter, dataSetTournaments);
+            //fremCreateTournament.Text = "Create Tournament";
+            //fremCreateTournament.ShowDialog();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
