@@ -11,10 +11,16 @@
     <Compile Update="Connection.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmCreateEditTournament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmTournaments.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Registration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="TournamentCreation.cs">
+    <Compile Update="StatisticForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

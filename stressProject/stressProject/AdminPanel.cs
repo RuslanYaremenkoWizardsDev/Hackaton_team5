@@ -71,13 +71,13 @@ namespace stressProject
                         TabControl.TabPages[3].Parent = null;*/
                     MessageBox.Show("O, you just a User");
 
-                    //LoginForm form = new LoginForm();
-                    //form.Close();
+                    AdminPanel form = new AdminPanel();
+                    form.Close();
 
-                    //LoginForm form2 = new LoginForm();
+                    frmTournaments form2 = new frmTournaments();
 
                     //form2.Access(2);
-                    //form2.ShowDialog();
+                    form2.Show();
                 }
             }
         }

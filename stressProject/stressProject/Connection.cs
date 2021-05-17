@@ -33,9 +33,8 @@ namespace stressProject
                 MessageBox.Show("Connection Successfull");
                 //Close();
 
-                TournamentCreation tournamentCreation = new TournamentCreation();
-                //var adminPanel = new AdminPanel();
-                tournamentCreation.ShowDialog();
+                var adminPanel = new AdminPanel();
+                adminPanel.ShowDialog();
             }
             else MessageBox.Show("Select DB to connect please");
         }
