@@ -117,7 +117,7 @@ namespace stressProject
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.button1.Font = new System.Drawing.Font("Sitka Banner", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(105, 550);
+            this.button1.Location = new System.Drawing.Point(221, 550);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(233, 59);
             this.button1.TabIndex = 13;

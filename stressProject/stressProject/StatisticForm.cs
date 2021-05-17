@@ -65,9 +65,7 @@ namespace stressProject
 
         private void tournamentsBtn_Click(object sender, EventArgs e)
         {
-            Form tournament = new frmTournaments();
 
-            tournament.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)

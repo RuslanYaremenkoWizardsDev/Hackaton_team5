@@ -20,24 +20,35 @@ namespace stressProject
         private DataSet dataSet = null;
         BindingSource bindingSource = new BindingSource();
 
+        SqlDataAdapter daUser;
+        SqlCommandBuilder bdUser;
+        BindingSource bd2 = new BindingSource();
+        DataTable taUser = new DataTable();
+
         //private bool newRowAdding = false;
 
-        private void UpdateDataBase()
+        public void Loading()
         {
-            sqlConnection = new SqlConnection(_connect);
-            sqlConnection.Open();
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
 
-            DataTable dataTable = new DataTable();
+            _connect = Properties.Settings.Default.Conecction;
+            SqlConnection cnn = new SqlConnection(_connect);
+            cnn.Open();
 
-            sqlDataAdapter = new SqlDataAdapter("SELECT *FROM Tournaments", sqlConnection);
-            sqlBuilder = new SqlCommandBuilder(sqlDataAdapter);
-            sqlDataAdapter.Fill(dataTable);
-            bindingSource.DataSource = dataTable;
+            DataTable dt2 = new DataTable();
+            daUser = new SqlDataAdapter("SELECT * FROM Tournaments", cnn);
+            bdUser = new SqlCommandBuilder(daUser);
+            daUser.Fill(dt2);
+
+            bd2.DataSource = dt2;
+            dataGridView1.DataSource = bd2;
+
+            dataGridView1.Columns[0].Visible = false;
         }
-
         private void TournamentCreation_Load(object sender, EventArgs e)
         {
-            UpdateDataBase();
+            Loading();
             dateTimePickerStartDate.CustomFormat = "yyyy/MM/dd hh:mm";
             dateTimePickerLastRegistrationDay.CustomFormat = "yyyy/MM/dd hh:mm";
         }
@@ -47,67 +58,75 @@ namespace stressProject
         {
             try
             {
-
-                string name = textBoxName.Text;
-                string description = textBoxDescription.Text;
-                string place = textBoxPlace.Text;
-                string mode = comboBoxMode.Text;
-                DateTime startDate = Convert.ToDateTime(dateTimePickerStartDate.Text);
-                DateTime lastDate = Convert.ToDateTime(dateTimePickerLastRegistrationDay.Text);
-                string levelOfTournament = comboBoxLevel.Text;
-                string numberOfParticipants = comboBoxCountPlayers.Text;
-                string scenarioForTournament = comboBoxScenario.Text;
-
-                int x = 0;
+                SqlConnection conn = new SqlConnection(_connect);
+                conn.Open();
                 string sql;
-
-                SqlConnection connection = new SqlConnection(_connect);
-                connection.Open();
-                sql = "SELECT * FROM Tournaments WHERE Name = @Name";
-
-                using (SqlCommand myCommand = new SqlCommand(sql, connection))
+                int x = 0;
+                sql = "Select * FROM Tournaments WHERE Name=@Name";
+                using (SqlCommand myCommand = new SqlCommand(sql, conn))
                 {
-                    myCommand.Parameters.AddWithValue("@Name", name);
-
-                    SqlDataReader sqlDataReader = myCommand.ExecuteReader();
-                    while (sqlDataReader.Read()) x++; sqlDataReader.Close();
+                    myCommand.Parameters.AddWithValue("@Name", textBoxName.Text);
+                    myCommand.Parameters.AddWithValue("@Description", textBoxDescription.Text);
+                    myCommand.Parameters.AddWithValue("@Mode", comboBoxMode.SelectedItem);
+                    myCommand.Parameters.AddWithValue("@Place", textBoxPlace.Text);
+                    myCommand.Parameters.AddWithValue("@StartDate", dateTimePickerStartDate.Value);
+                    myCommand.Parameters.AddWithValue("@LastRegistrationDate", dateTimePickerLastRegistrationDay.Value);
+                    myCommand.Parameters.AddWithValue("@LevelOfTournament", comboBoxLevel.SelectedItem);
+                    myCommand.Parameters.AddWithValue("@NumberOfParticipants", comboBoxCountPlayers.SelectedItem);
+                    myCommand.Parameters.AddWithValue("@ScenarioForTournament", comboBoxScenario.SelectedItem);
+                    SqlDataReader reader = myCommand.ExecuteReader();
+                    while (reader.Read()) x++; reader.Close();
                 }
-
                 if (x == 0)
                 {
-                    sql = "INSERT INTO Tournaments(Name,Description,Mode,Place,StarDate,LastRegistrationDate,LevelOfTournament,NumberOfParticipants,ScenarioForTournament)values" +
-                        "(@Name,@Description,@Mode,@Place,@StarDate,@LastRegistrationDate,@LevelOfTournament,@NumberOfParticipants,@ScenarioForTournament)";
-
-                    using (SqlCommand myCommand = new SqlCommand(sql, connection))
+                    sql = "INSERT INTO Tournaments(Name,Description,Mode,Place,StartDate,LastRegistrationDate,LevelOfTournament,NumberOfParticipants,ScenarioForTournament)values" +
+                        "(@Name,@Description,@Mode,@Place,@StartDate,@LastRegistrationDate,@LevelOfTournament,@NumberOfParticipants,@ScenarioForTournament)";
+                    using (SqlCommand myCommand = new SqlCommand(sql, conn))
                     {
-                        myCommand.Parameters.AddWithValue("@Name", name);
-                        myCommand.Parameters.AddWithValue("@Description", description);
-                        myCommand.Parameters.AddWithValue("@Mode", mode);
-                        myCommand.Parameters.AddWithValue("@Place", place);
+                        myCommand.Parameters.AddWithValue("@Name", textBoxName.Text);
+                        myCommand.Parameters.AddWithValue("@Description", textBoxDescription.Text);
+                        myCommand.Parameters.AddWithValue("@Mode", comboBoxMode.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@Place", textBoxPlace.Text);
                         myCommand.Parameters.AddWithValue("@StartDate", dateTimePickerStartDate.Value);
                         myCommand.Parameters.AddWithValue("@LastRegistrationDate", dateTimePickerLastRegistrationDay.Value);
-                        myCommand.Parameters.AddWithValue("@LevelOfTournament", levelOfTournament);
-                        myCommand.Parameters.AddWithValue("@NumberOfParticipants", numberOfParticipants);
-                        myCommand.Parameters.AddWithValue("@ScenarioForTournament", scenarioForTournament);
+                        myCommand.Parameters.AddWithValue("@LevelOfTournament", comboBoxLevel.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@NumberOfParticipants", comboBoxCountPlayers.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@ScenarioForTournament", comboBoxScenario.SelectedItem);
                         myCommand.ExecuteNonQuery();
                     }
-
-                    MessageBox.Show("Added");
+                    MessageBox.Show("Insert");
                 }
+                else
+                {
+                    sql = "UPDATE Products SET Name=@Name,Description=@Description,Mode=@Mode,Place=@Place," +
+                        "StartDate=@StartDate,LastRegistrationDate=@LastRegistrationDate,LevelOfTournament=@LevelOfTournament,NumberOfParticipants=@NumberOfParticipants,ScenarioForTournament=@ScenarioForTournament WHERE Name=@Name";
+                    using (SqlCommand myCommand = new SqlCommand(sql, conn))
+                    {
+                        myCommand.Parameters.AddWithValue("@Name", textBoxName.Text);
+                        myCommand.Parameters.AddWithValue("@Description", textBoxDescription.Text);
+                        myCommand.Parameters.AddWithValue("@Mode", comboBoxMode.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@Place", textBoxPlace.Text);
+                        myCommand.Parameters.AddWithValue("@StartDate", dateTimePickerStartDate.Value);
+                        myCommand.Parameters.AddWithValue("@LastRegistrationDate", dateTimePickerLastRegistrationDay.Value);
+                        myCommand.Parameters.AddWithValue("@LevelOfTournament", comboBoxLevel.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@NumberOfParticipants", comboBoxCountPlayers.SelectedItem);
+                        myCommand.Parameters.AddWithValue("@ScenarioForTournament", comboBoxScenario.SelectedItem);
+                        myCommand.ExecuteNonQuery();
+                    }
+                    MessageBox.Show("Update");
+                }
+                Loading();
 
-                UpdateDataBase();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something wrong");
+                MessageBox.Show("Error " + ex.Message);
             }
-        }
+}
 
         private void buttonTournamentsPage_Click(object sender, EventArgs e)
         {
-            Form tournaments = new frmTournaments();
 
-            tournaments.ShowDialog();
         }
 
         private void buttonStatisticsPage_Click(object sender, EventArgs e)
@@ -122,6 +141,11 @@ namespace stressProject
             Form login = new AdminPanel();
 
             login.ShowDialog();
+        }
+
+        private void comboBoxMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

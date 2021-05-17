@@ -215,6 +215,7 @@ namespace stressProject
             this.comboBoxMode.Name = "comboBoxMode";
             this.comboBoxMode.Size = new System.Drawing.Size(153, 28);
             this.comboBoxMode.TabIndex = 15;
+            this.comboBoxMode.SelectedIndexChanged += new System.EventHandler(this.comboBoxMode_SelectedIndexChanged);
             // 
             // comboBoxLevel
             // 

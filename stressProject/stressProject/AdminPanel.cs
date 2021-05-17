@@ -59,24 +59,22 @@ namespace stressProject
                 if (role == Role.Admin)
                 {
                     MessageBox.Show("Welcome our Admin");
-                    //LoginForm form = new LoginForm();
-                    //form.Close();
-                    //LoginForm form2 = new LoginForm();
-                    //form2.Access(1);
-                    //form2.ShowDialog();
+
+                    AdminPanel form = new AdminPanel();
+                    form.Close();
+
+                    TournamentCreation form2 = new TournamentCreation();
+
                 }
                 else if (role == Role.User)
                 {
-                    /*TabControl.TabPageCollection[3].Parent=null;
-                        TabControl.TabPages[3].Parent = null;*/
                     MessageBox.Show("O, you just a User");
 
                     AdminPanel form = new AdminPanel();
                     form.Close();
 
-                    frmTournaments form2 = new frmTournaments();
+                    TournamentCreation form2 = new TournamentCreation();
 
-                    //form2.Access(2);
                     form2.Show();
                 }
             }
