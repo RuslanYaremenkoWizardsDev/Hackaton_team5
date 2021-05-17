@@ -166,7 +166,7 @@ namespace stressProject
                     //if (Password.Text != dataGridUser.CurrentRow.Cells[2].Value.ToString()) 
                     //{
                         RegistrationFunction();
-                    //}
+                    //} 
                 }
                 else 
                 {
