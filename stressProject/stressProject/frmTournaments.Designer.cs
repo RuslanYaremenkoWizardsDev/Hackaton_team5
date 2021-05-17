@@ -195,10 +195,10 @@
             // 
             // btnCreateTournament
             // 
-            this.btnCreateTournament.Location = new System.Drawing.Point(16, 18);
+            this.btnCreateTournament.Location = new System.Drawing.Point(42, 14);
             this.btnCreateTournament.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCreateTournament.Name = "btnCreateTournament";
-            this.btnCreateTournament.Size = new System.Drawing.Size(153, 35);
+            this.btnCreateTournament.Size = new System.Drawing.Size(229, 56);
             this.btnCreateTournament.TabIndex = 1;
             this.btnCreateTournament.Text = "Create Tournaments";
             this.btnCreateTournament.UseVisualStyleBackColor = true;
@@ -206,10 +206,10 @@
             // 
             // btnStats
             // 
-            this.btnStats.Location = new System.Drawing.Point(177, 18);
+            this.btnStats.Location = new System.Drawing.Point(350, 14);
             this.btnStats.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStats.Name = "btnStats";
-            this.btnStats.Size = new System.Drawing.Size(153, 35);
+            this.btnStats.Size = new System.Drawing.Size(229, 56);
             this.btnStats.TabIndex = 1;
             this.btnStats.Text = "Stats";
             this.btnStats.UseVisualStyleBackColor = true;
@@ -225,6 +225,7 @@
             this.linkLblLogout.TabIndex = 2;
             this.linkLblLogout.TabStop = true;
             this.linkLblLogout.Text = "Log out";
+            this.linkLblLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblLogout_LinkClicked);
             // 
             // radioBtnStartDate
             // 
@@ -240,6 +241,7 @@
             // 
             // groupBoxSearch
             // 
+            this.groupBoxSearch.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxSearch.Controls.Add(this.btnClear);
             this.groupBoxSearch.Controls.Add(this.btnFilter);
             this.groupBoxSearch.Controls.Add(this.comboBoxState);
@@ -402,6 +404,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::stressProject.Properties.Resources.photo_2021_05_16_16_02_21;
             this.ClientSize = new System.Drawing.Size(1447, 652);
             this.Controls.Add(this.groupBoxSearch);
             this.Controls.Add(this.linkLblLogout);

@@ -102,6 +102,27 @@ namespace stressProject
                 MessageBox.Show("Something wrong");
             }
         }
+
+        private void buttonTournamentsPage_Click(object sender, EventArgs e)
+        {
+            Form tournaments = new frmTournaments();
+
+            tournaments.ShowDialog();
+        }
+
+        private void buttonStatisticsPage_Click(object sender, EventArgs e)
+        {
+            Form statistics = new StatisticForm();
+
+            statistics.ShowDialog();
+        }
+
+        private void buttonLogOutFromTournamentCreation_Click(object sender, EventArgs e)
+        {
+            Form login = new AdminPanel();
+
+            login.ShowDialog();
+        }
     }
 
     //private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
