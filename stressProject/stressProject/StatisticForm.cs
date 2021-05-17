@@ -55,5 +55,24 @@ namespace stressProject
 
             LoadData();
         }
+
+        private void logOutBtn_Click(object sender, EventArgs e)
+        {
+            Form login = new AdminPanel();
+
+            login.ShowDialog();
+        }
+
+        private void tournamentsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form createTournament = new TournamentCreation();
+
+            createTournament.ShowDialog();
+        }
     }
 }
